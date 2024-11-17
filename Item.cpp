@@ -87,3 +87,12 @@ bool Item::Burning()
 		return false;
 	}
 }
+
+bool Item::CompareTag(uint8_t tag)
+{
+	if ((mTag & tag) != 0)
+	{
+		return true;
+	}
+	return false;
+}

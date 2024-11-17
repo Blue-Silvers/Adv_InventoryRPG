@@ -39,15 +39,25 @@ void Start()
     gameManage.Init(myInvotory);
 
     myInvotory.Start();
-    myInvotory.actualInvotory[0][0] = gameManage.broadSword;
-    myInvotory.actualInvotory[0][1] = gameManage.cactusSword;
-    myInvotory.actualInvotory[0][2] = gameManage.meteorStrike;
-    myInvotory.actualInvotory[0][3] = gameManage.summonSatan;
-    myInvotory.actualInvotory[0][4] = gameManage.poseidonStaff;
-    myInvotory.actualInvotory[0][5] = gameManage.bread;
-    myInvotory.actualInvotory[0][6] = gameManage.honey;
-    myInvotory.actualInvotory[0][7] = gameManage.chainedChesplate;
-    myInvotory.actualInvotory[0][8] = gameManage.spartaHelmet;
+
+    myInvotory.AddToInventory(gameManage.broadSword);
+    myInvotory.AddToInventory(gameManage.cactusSword);
+    myInvotory.AddToInventory(gameManage.meteorStrike);
+    myInvotory.AddToInventory(gameManage.summonSatan);
+    myInvotory.AddToInventory(gameManage.poseidonStaff);
+    myInvotory.AddToInventory(gameManage.bread);
+    myInvotory.AddToInventory(gameManage.honey);
+    myInvotory.AddToInventory(gameManage.chainedChesplate);
+    myInvotory.AddToInventory(gameManage.spartaHelmet);
+    /*myInvotory.actualInvotory[0] = gameManage.broadSword;
+    myInvotory.actualInvotory[1] = gameManage.cactusSword;
+    myInvotory.actualInvotory[2] = gameManage.meteorStrike;
+    myInvotory.actualInvotory[3] = gameManage.summonSatan;
+    myInvotory.actualInvotory[4] = gameManage.poseidonStaff;
+    myInvotory.actualInvotory[5] = gameManage.bread;
+    myInvotory.actualInvotory[6] = gameManage.honey;
+    myInvotory.actualInvotory[7] = gameManage.chainedChesplate;
+    myInvotory.actualInvotory[8] = gameManage.spartaHelmet;*/
 }
 
 

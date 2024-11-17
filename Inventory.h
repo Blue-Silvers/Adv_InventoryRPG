@@ -19,7 +19,8 @@ private :
 
 public :
 	
-	Item* actualInvotory[8][9]{
+    vector<Item*> actualInvotory;
+	/*Item* actualInvotory[8][9]{
         { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr},
         { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr},
         { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr},
@@ -28,9 +29,11 @@ public :
         { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr},
         { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr},
         { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr},
-    };
+    };*/
 
     Inventory();
+    void AddToInventory(Item* newItem);
+    void RemoveFromInventory(unsigned int itemIndex);
 	void Draw(int x, int y, Font ft);
 	void Start();
     void Update(int x, int y, Font ft);

@@ -41,5 +41,6 @@ public:
 	virtual int GetArmor() = 0;
 
 	bool Burning() override;
+	bool CompareTag(uint8_t tag);
 };
 
