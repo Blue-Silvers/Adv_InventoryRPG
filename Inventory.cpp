@@ -140,10 +140,11 @@ void Inventory::Draw(int x, int y, Font ft)
 			DrawTextEx(ft, "Right click for sell", Vector2{ 925, 500 }, 25, 5, YELLOW);
 		}
 	}
-
+	int invPos = x / 9;
+	Rectangle itemRec{ (int)(100 * (x - (x / 9)*9)), (int)(100 * invPos), 100, 100 };
 	if (actualInvotory[x] != nullptr) 
 	{
-		DrawTexturePro(actualInvotory[x]->itemSprite, Rectangle{0, 0, 400, 400}, rec, origin, 0.0f, WHITE);
+		DrawTexturePro(actualInvotory[x]->itemSprite, Rectangle{0, 0, 400, 400}, itemRec, origin, 0.0f, WHITE);
 	}
 
 	DrawTextEx(ft, TextFormat("Armor : %01i ", armorValue), Vector2{ 925, 700 }, 25, 5, LIGHTGRAY);
