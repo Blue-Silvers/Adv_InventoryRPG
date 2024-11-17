@@ -81,15 +81,6 @@ string Staff::GetItemStatistique()
 		itemEffectText = "None";
 	}
 	std::ostringstream returnValue;
-	returnValue << "Name : " << itemName <<
-		"\n\n" << "Stack of : " << actualItemStackable << " / " << maxItemStackable <<
-		"\n\n" << "Weight : " << itemWeight << "Kg" <<
-		"\n\n" << "Price : " << itemPrice << "PO" <<
-		"\n\n" << "Effect : " << itemEffectText <<
-		"\n\n" << "Durability : " << itemDurability << " / " << itemMaxDurability <<
-		"\n\n" << "Damage : " << itemDamage <<
-		"\n\n" << "SpeedAttack : " << itemAttackSpeed <<
-		"\n\n" << "Mana : " << itemMaxMana;
 
 	if (Burning() == true)
 	{
@@ -98,6 +89,10 @@ string Staff::GetItemStatistique()
 			"\n\n" << "Weight : " << itemWeight << "Kg" <<
 			"\n\n" << "Price : " << itemPrice << "PO" <<
 			"\n\n" << "Effect : " << itemEffectText <<
+			"\n\n" << "Durability : " << itemDurability << " / " << itemMaxDurability <<
+			"\n\n" << "Damage : " << itemDamage <<
+			"\n\n" << "SpeedAttack : " << itemAttackSpeed <<
+			"\n\n" << "Mana : " << itemMaxMana <<
 			"\n\n" << "This item can burning";
 	}
 	else
@@ -106,7 +101,11 @@ string Staff::GetItemStatistique()
 			"\n\n" << "Stack of : " << actualItemStackable << " / " << maxItemStackable <<
 			"\n\n" << "Weight : " << itemWeight << "Kg" <<
 			"\n\n" << "Price : " << itemPrice << "PO" <<
-			"\n\n" << "Effect : " << itemEffectText;
+			"\n\n" << "Effect : " << itemEffectText <<
+			"\n\n" << "Durability : " << itemDurability << " / " << itemMaxDurability <<
+			"\n\n" << "Damage : " << itemDamage <<
+			"\n\n" << "SpeedAttack : " << itemAttackSpeed <<
+			"\n\n" << "Mana : " << itemMaxMana;
 	}
 	return returnValue.str();
 }

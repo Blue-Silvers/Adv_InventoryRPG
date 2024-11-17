@@ -79,13 +79,6 @@ string Magic::GetItemStatistique()
 		itemEffectText = "None";
 	}
 	std::ostringstream returnValue;
-	returnValue << "Name : " << itemName <<
-		"\n\n" << "Stack of : " << actualItemStackable << " / " << maxItemStackable <<
-		"\n\n" << "Weight : " << itemWeight << "Kg" <<
-		"\n\n" << "Price : " << itemPrice << "PO" <<
-		"\n\n" << "Effect : " << itemEffectText <<
-		"\n\n" << "Spell level : " << spellLevel <<
-		"\n\n" << "Spell duration : " << spellDuration;
 
 	if (Burning() == true) 
 	{
@@ -93,7 +86,9 @@ string Magic::GetItemStatistique()
 			"\n\n" << "Stack of : " << actualItemStackable << " / " << maxItemStackable <<
 			"\n\n" << "Weight : " << itemWeight << "Kg" <<
 			"\n\n" << "Price : " << itemPrice << "PO" <<
-			"\n\n" << "Effect : " << itemEffectText << 
+			"\n\n" << "Effect : " << itemEffectText <<
+			"\n\n" << "Spell level : " << spellLevel <<
+			"\n\n" << "Spell duration : " << spellDuration <<
 			"\n\n" << "This item can burning";
 	}
 	else
@@ -102,7 +97,9 @@ string Magic::GetItemStatistique()
 			"\n\n" << "Stack of : " << actualItemStackable << " / " << maxItemStackable <<
 			"\n\n" << "Weight : " << itemWeight << "Kg" <<
 			"\n\n" << "Price : " << itemPrice << "PO" <<
-			"\n\n" << "Effect : " << itemEffectText;
+			"\n\n" << "Effect : " << itemEffectText <<
+			"\n\n" << "Spell level : " << spellLevel <<
+			"\n\n" << "Spell duration : " << spellDuration;
 	}
 
 	return returnValue.str();
