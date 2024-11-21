@@ -5,7 +5,7 @@ Weapon::Weapon()
 
 }
 
-Weapon::Weapon(std::string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, int damage, float attackSpeed, Texture2D newItemSprite)
+Weapon::Weapon(std::string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, int damage, float attackSpeed, Texture2D newItemSprite, uint8_t tag)
 {
 	itemName = name;
 	actualItemStackable = stackable;
@@ -18,6 +18,7 @@ Weapon::Weapon(std::string name, int stackable, int maxStackable, int weight, in
 	itemDamage = damage;
 	itemAttackSpeed = attackSpeed;
 	itemSprite = newItemSprite;
+	mTag = tag;
 }
 
 void Weapon::Start() 

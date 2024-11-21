@@ -63,13 +63,13 @@ void Start()
 
 void Update()
 {
-    
-    for (int x = 0; x < 9; x++)
+    if (IsMouseButtonReleased(MOUSE_BUTTON_MIDDLE))
     {
-        for (int y = 0; y < 8; y++)
-        {
-            myInvotory.Update(x, y, ft);
-        }
+        myInvotory.AddToInventory(gameManage.cactusSword);
+    }
+    for (int x = 0; x < myInvotory.actualInvotory.size(); x++)
+    {
+        myInvotory.Update(x, x / 9, ft);
     }
 }
 
@@ -87,11 +87,22 @@ void Draw()
             myInvotory.Draw(x, y, ft);
         }
     }
+    for (int x = 0; x < myInvotory.actualInvotory.size(); x++)
+    {
+        myInvotory.DrawItem(x, ft);
+    }
     for (int x = 0; x < 9; x++)
     {
         for (int y = 0; y < 8; y++)
         {
             myInvotory.Update(x, y, ft);
+        }
+    }
+    for (int x = 0; x < myInvotory.actualInvotory.size(); x++)
+    {
+        if (myInvotory.actualInvotory[x] == nullptr )
+        {
+            myInvotory.actualInvotory.erase(myInvotory.actualInvotory.begin() + x);;
         }
     }
     EndDrawing();

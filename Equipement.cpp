@@ -6,7 +6,7 @@ Equipement::Equipement()
 
 }
 
-Equipement::Equipement(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, Texture2D newItemSprite)
+Equipement::Equipement(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, Texture2D newItemSprite, uint8_t tag)
 {
 	itemName = name;
 	actualItemStackable = stackable;
@@ -17,6 +17,7 @@ Equipement::Equipement(string name, int stackable, int maxStackable, int weight,
 	itemMaxDurability = maxDurability;
 	itemDurability = durability;
 	itemSprite = newItemSprite;
+	mTag = tag;
 }
 
 int Equipement::GetFood()

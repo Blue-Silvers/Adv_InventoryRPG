@@ -4,7 +4,7 @@ Staff::Staff()
 
 }
 
-Staff::Staff(std::string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, int damage, float attackSpeed, int maxMana, Texture2D newItemSprite)
+Staff::Staff(std::string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, int damage, float attackSpeed, int maxMana, Texture2D newItemSprite, uint8_t tag)
 {
 	itemName = name;
 	actualItemStackable = stackable;
@@ -18,6 +18,7 @@ Staff::Staff(std::string name, int stackable, int maxStackable, int weight, int 
 	itemAttackSpeed = attackSpeed;
 	itemMaxMana = maxMana;
 	itemSprite = newItemSprite;
+	mTag = tag;
 }
 
 int Staff::GetFood()

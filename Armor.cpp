@@ -5,7 +5,7 @@ Armor::Armor()
 
 }
 
-Armor::Armor(std::string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, int protection, armorSlot armorType, Texture2D newItemSprite)
+Armor::Armor(std::string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, int protection, armorSlot armorType, Texture2D newItemSprite, uint8_t tag)
 {
 	itemName = name;
 	actualItemStackable = stackable;
@@ -16,6 +16,7 @@ Armor::Armor(std::string name, int stackable, int maxStackable, int weight, int 
 	itemMaxDurability = maxDurability;
 	itemDurability = durability;
 	armorProtection = protection;
+	mTag = tag;
 	if ((int)armorType == 0) 
 	{
 		armoreTypeName = "Helmet";

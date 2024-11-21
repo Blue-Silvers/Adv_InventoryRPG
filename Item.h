@@ -1,6 +1,7 @@
 #pragma once
 #include "raylib.h"
 #include "iFlammable.h"
+#include "ItemTags.h"
 #include <iostream>
 #include <sstream>
 using namespace std;
@@ -28,7 +29,7 @@ public:
 	int itemPrice = 1;
 	Texture2D itemSprite;
 	itemEffect itemEffectName = NONE;
-	uint8_t mTag;
+	uint8_t mTag =0;
 
 	Item();
 	Item(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, Texture2D newItemSprite, uint8_t tag);

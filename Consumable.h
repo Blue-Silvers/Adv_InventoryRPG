@@ -10,7 +10,7 @@ public:
 	int healing = 1;
 
 	Consumable();
-	Consumable(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int heal, Texture2D newItemSprite);
+	Consumable(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int heal, Texture2D newItemSprite, uint8_t tag);
 
 	string GetItemStatistique() override;
 	int GetFood() override;

@@ -16,6 +16,7 @@ Item::Item(string name, int stackable, int maxStackable, int weight, int price, 
 	itemEffectName = effect;
 	itemSprite = newItemSprite;
 	mTag = tag;
+	//mTag = ItemTag::Armor;
 }
 
 

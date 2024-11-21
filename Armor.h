@@ -21,7 +21,7 @@ public:
 	string armoreTypeName = "None";
 	bool mEquip = false;
 	Armor();
-	Armor(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, int protection, armorSlot armorType, Texture2D newItemSprite);
+	Armor(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, int protection, armorSlot armorType, Texture2D newItemSprite, uint8_t tag);
 	~Armor();
 
 	string GetItemStatistique() override;

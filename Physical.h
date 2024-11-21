@@ -10,7 +10,7 @@ public:
 
 
 	Physical();
-	Physical(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, int damage, float attackSpeed, int range, Texture2D newItemSprite);
+	Physical(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, int damage, float attackSpeed, int range, Texture2D newItemSprite, uint8_t tag);
 
 	string GetItemStatistique() override;
 	int GetFood() override;

@@ -5,7 +5,7 @@ Consumable::Consumable()
 
 }
 
-Consumable::Consumable(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int heal, Texture2D newItemSprite)
+Consumable::Consumable(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int heal, Texture2D newItemSprite, uint8_t tag)
 {
 	itemName = name;
 	actualItemStackable = stackable;
@@ -15,6 +15,7 @@ Consumable::Consumable(string name, int stackable, int maxStackable, int weight,
 	itemEffectName = effect;
 	healing = heal;
 	itemSprite = newItemSprite;
+	mTag = tag;
 }
 
 int Consumable::GetFood()

@@ -10,7 +10,7 @@ public:
 	int itemMaxDurability = 1;
 
 	Equipement();
-	Equipement(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, Texture2D newItemSprite);
+	Equipement(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, Texture2D newItemSprite, uint8_t tag);
 
 	string GetItemStatistique() override;
 	int GetFood() override;

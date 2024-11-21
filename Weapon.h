@@ -11,7 +11,7 @@ public:
 	float itemAttackSpeed = 1.0;
 
 	Weapon();
-	Weapon(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, int damage, float attackSpeed, Texture2D itemSprite);
+	Weapon(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, int damage, float attackSpeed, Texture2D itemSprite, uint8_t tag);
 	void Start();
 
 	string GetItemStatistique() override;

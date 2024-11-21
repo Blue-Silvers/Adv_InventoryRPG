@@ -1,19 +1,56 @@
 #include "Inventory.h"
+
 Inventory::Inventory()
 {
-
 }
 
 void Inventory::AddToInventory(Item* newItem)
 {
-	actualInvotory.push_back(newItem);
+
+	bool hole = false;
+	for (int x = 0; x < actualInvotory.size(); x++)
+	{
+		if (actualInvotory[x] == nullptr && hole == false)
+		{
+			it = actualInvotory.begin() + x;
+			actualInvotory.insert(it, newItem);
+			hole = true;
+		}
+	}
+	if(hole == false)
+	{
+		actualInvotory.push_back(newItem);
+	}
+
+	
+	/*if (newItem->CompareTag(3))
+	{
+		physicalInvotory.push_back(newItem);
+	}
+	if (dynamic_cast<Magic*>(newItem) != NULL)
+	{
+		magicInvotory.push_back(newItem);
+	}
+	if (dynamic_cast<Staff*>(newItem) != NULL)
+	{
+		staffInvotory.push_back(newItem);
+	}
+	if (dynamic_cast<Consumable*>(newItem) != NULL)
+	{
+		consumableInvotory.push_back(newItem);
+	}
+	if (dynamic_cast<Armor*>(newItem) != NULL)
+	{
+		armorInvotory.push_back(newItem);
+	}*/
 }
 
-void Inventory::RemoveFromInventory(unsigned int itemIndex)
+void Inventory::RemoveFromInventory(int itemIndex)
 {
-	std::vector<Item*>::iterator i;
+	/*std::vector<Item*>::iterator i;
 	i = actualInvotory.begin() + itemIndex;
-	actualInvotory.erase(i);
+	actualInvotory.erase(i);*/
+	actualInvotory[itemIndex] = nullptr;
 }
 
 void Inventory::Start()
@@ -24,8 +61,8 @@ void Inventory::Start()
 
 void Inventory::Update(int x, int y, Font ft)
 {
-
-	Rectangle rec{ (int)(100 * x), (int)(100 * y), 100, 100 };
+	int invPos = x / 9;
+	Rectangle rec{ (int)(100 * (x - (x / 9) * 9)), (int)(100 * y), 100, 100 };
 	if (CheckCollisionPointRec(GetMousePosition(), rec))
 	{
 		if (actualInvotory[x] != nullptr)
@@ -90,7 +127,7 @@ void Inventory::Update(int x, int y, Font ft)
 				}
 				else 
 				{
-					actualInvotory[x] = nullptr;
+					RemoveFromInventory(x);
 				}
 			}
 			if (IsMouseButtonReleased(MOUSE_BUTTON_RIGHT) && press == false)
@@ -98,7 +135,6 @@ void Inventory::Update(int x, int y, Font ft)
 					press = true;
 			}
 		}
-
 	}
 }
 
@@ -115,12 +151,26 @@ void Inventory::Draw(int x, int y, Font ft)
 		DrawTexturePro(backGround, Rectangle{ 0, 0, 128, 128 }, rec, origin, 0.0f, WHITE);
 	}
 
-	if (CheckCollisionPointRec(GetMousePosition(), rec))
+	
+
+
+	DrawTextEx(ft, TextFormat("Armor : %01i ", armorValue), Vector2{ 925, 700 }, 25, 5, LIGHTGRAY);
+	DrawTextEx(ft, TextFormat("Actual Hp : %01i/%01i", life, maxLife), Vector2{ 925, 725 }, 25, 5, PINK);
+	DrawTextEx(ft, TextFormat("Actual money : %01i ", money, "PO"), Vector2{925, 750}, 25, 5, YELLOW);
+}
+
+void Inventory::DrawItem(int x, Font ft)
+{
+	Vector2 origin{ 0, 0 };
+	int invPos = x / 9;
+	Rectangle itemRec{ (int)(100 * (x - (x / 9) * 9)), (int)(100 * invPos), 100, 100 };
+
+	if (CheckCollisionPointRec(GetMousePosition(), itemRec))
 	{
 		if (actualInvotory[x] != nullptr)
 		{
 			DrawTextEx(ft, actualInvotory[x]->GetItemStatistique().c_str(), Vector2{ 925, 5 }, 25, 5, WHITE);
-			if (actualInvotory[x]->GetFood() != 0) 
+			if (actualInvotory[x]->GetFood() != 0)
 			{
 				DrawTextEx(ft, "Left click for comsum", Vector2{ 925, 475 }, 25, 5, YELLOW);
 			}
@@ -129,25 +179,45 @@ void Inventory::Draw(int x, int y, Font ft)
 				DrawTextEx(ft, "Left click for", Vector2{ 925, 450 }, 25, 5, YELLOW);
 				DrawTextEx(ft, "learn spell", Vector2{ 925, 475 }, 25, 5, YELLOW);
 			}
-			else if (actualInvotory[x]->GetArmor() != 0 && actualInvotory[y]->GetEquip() == false)
+			else if (actualInvotory[x]->GetArmor() != 0 && actualInvotory[x]->GetEquip() == false)
 			{
 				DrawTextEx(ft, "Left click for equip", Vector2{ 925, 475 }, 25, 5, YELLOW);
 			}
-			else if (actualInvotory[x]->GetArmor() != 0 && actualInvotory[y]->GetEquip() == true)
+			else if (actualInvotory[x]->GetArmor() != 0 && actualInvotory[x]->GetEquip() == true)
 			{
 				DrawTextEx(ft, "Left click for unequip", Vector2{ 925, 475 }, 25, 5, YELLOW);
 			}
 			DrawTextEx(ft, "Right click for sell", Vector2{ 925, 500 }, 25, 5, YELLOW);
 		}
 	}
-	int invPos = x / 9;
-	Rectangle itemRec{ (int)(100 * (x - (x / 9)*9)), (int)(100 * invPos), 100, 100 };
-	if (actualInvotory[x] != nullptr) 
-	{
-		DrawTexturePro(actualInvotory[x]->itemSprite, Rectangle{0, 0, 400, 400}, itemRec, origin, 0.0f, WHITE);
-	}
 
-	DrawTextEx(ft, TextFormat("Armor : %01i ", armorValue), Vector2{ 925, 700 }, 25, 5, LIGHTGRAY);
-	DrawTextEx(ft, TextFormat("Actual Hp : %01i/%01i", life, maxLife), Vector2{ 925, 725 }, 25, 5, PINK);
-	DrawTextEx(ft, TextFormat("Actual money : %01i ", money, "PO"), Vector2{925, 750}, 25, 5, YELLOW);
+	if (actualInvotory[x] != nullptr)
+	{
+		DrawTexturePro(actualInvotory[x]->itemSprite, Rectangle{ 0, 0, 400, 400 }, itemRec, origin, 0.0f, WHITE);
+	}
+	/*if (physicalInvotory[x] != nullptr)
+	{
+		Rectangle itemRec{ (int)(100 * (x - (x / 9) * 9)), (int)(100 * invPos), 100, 100 };
+		DrawTexturePro(physicalInvotory[x]->itemSprite, Rectangle{ 0, 0, 400, 400 }, itemRec, origin, 0.0f, WHITE);
+	}
+	if (magicInvotory[x] != nullptr)
+	{
+		Rectangle itemRec{ (int)(100 * (x - (x / 9) * 9)), (int)(100 * (invPos + 1)), 100, 100 };
+		DrawTexturePro(magicInvotory[x]->itemSprite, Rectangle{ 0, 0, 400, 400 }, itemRec, origin, 0.0f, WHITE);
+	}
+	if (staffInvotory[x] != nullptr)
+	{
+		Rectangle itemRec{ (int)(100 * (x - (x / 9) * 9)), (int)(100 * (invPos + 2)), 100, 100 };
+		DrawTexturePro(staffInvotory[x]->itemSprite, Rectangle{ 0, 0, 400, 400 }, itemRec, origin, 0.0f, WHITE);
+	}
+	if (armorInvotory[x] != nullptr)
+	{
+		Rectangle itemRec{ (int)(100 * (x - (x / 9) * 9)), (int)(100 * (invPos + 3)), 100, 100 };
+		DrawTexturePro(armorInvotory[x]->itemSprite, Rectangle{ 0, 0, 400, 400 }, itemRec, origin, 0.0f, WHITE);
+	}
+	if (consumableInvotory[x] != nullptr)
+	{
+		Rectangle itemRec{ (int)(100 * (x - (x / 9) * 9)), (int)(100 * (invPos + 4)), 100, 100 };
+		DrawTexturePro(consumableInvotory[x]->itemSprite, Rectangle{ 0, 0, 400, 400 }, itemRec, origin, 0.0f, WHITE);
+	}*/
 }
