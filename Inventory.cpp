@@ -48,19 +48,46 @@ void Inventory::Update(int x, Font ft)
 			{
 				if (actualInvotory[x]->GetFood() != 0)
 				{
-					life += actualInvotory[x]->GetFood();
-					if (life > maxLife) 
+					if (actualInvotory[x]->cookable == true)
 					{
-						life = maxLife;
+						if (foodRecepies[0] == nullptr)
+						{
+							foodRecepies[0] = actualInvotory[x];
+						}
+						else
+						{
+							foodRecepies[1] = actualInvotory[x];
+						}
+						RemoveFromInventory(x);
+						if (foodRecepies[1] != nullptr)
+						{
+							FoodProcessor processor;
+							Item* newFood = processor.Cook(foodRecepies[0], foodRecepies[1]);
+							actualInvotory.push_back(newFood);
+							if (newFood == foodRecepies[0])
+							{
+								actualInvotory.push_back(foodRecepies[1]);
+							}
+							foodRecepies[0] = nullptr;
+							foodRecepies[1] = nullptr;
+						}
 					}
-					if (actualInvotory[x]->actualItemStackable > 1)
+					else 
 					{
-						actualInvotory[x]->actualItemStackable -= 1;
-						use = false;
-					}
-					else
-					{
-						//actualInvotory[x] = nullptr;
+						life += actualInvotory[x]->GetFood();
+						if (life > maxLife)
+						{
+							life = maxLife;
+						}
+						if (actualInvotory[x]->actualItemStackable > 1)
+						{
+							actualInvotory[x]->actualItemStackable -= 1;
+							use = false;
+						}
+						else
+						{
+							actualInvotory[x] = nullptr;
+						}
 					}
 				}
 				else if (actualInvotory[x]->GetLearnSpeel() != 0)
@@ -104,33 +131,6 @@ void Inventory::Update(int x, Font ft)
 				else 
 				{
 					RemoveFromInventory(x);
-				}
-			}
-			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
-			{
-				if (actualInvotory[x]->cookable == true)
-				{
-					if (foodRecepies[0] == nullptr)
-					{
-						foodRecepies[0] = actualInvotory[x];
-					}
-					else 
-					{
-						foodRecepies[1] = actualInvotory[x];
-					}
-					RemoveFromInventory(x);
-					if (foodRecepies[1] != nullptr)
-					{
-						FoodProcessor processor;
-						Item* newFood = processor.Cook(foodRecepies[0], foodRecepies[1]);
-						actualInvotory.push_back(newFood);
-						if (newFood == foodRecepies[0]) 
-						{
-							actualInvotory.push_back(foodRecepies[1]);
-						}
-						foodRecepies[0] = nullptr;
-						foodRecepies[1] = nullptr;
-					}
 				}
 			}
 			if (IsMouseButtonReleased(MOUSE_BUTTON_RIGHT) && press == false)
@@ -238,7 +238,14 @@ void Inventory::DrawItem(int x, Font ft)
 			DrawTextEx(ft, actualInvotory[x]->GetItemStatistique().c_str(), Vector2{ 925, 5 }, 25, 5, WHITE);
 			if (actualInvotory[x]->GetFood() != 0)
 			{
-				DrawTextEx(ft, "Left click for comsum", Vector2{ 925, 475 }, 25, 5, YELLOW);
+				if (actualInvotory[x]->cookable == true)
+				{
+					DrawTextEx(ft, "Left click for cook", Vector2{ 925, 475 }, 25, 5, YELLOW);
+				}
+				else 
+				{
+					DrawTextEx(ft, "Left click for comsum", Vector2{ 925, 475 }, 25, 5, YELLOW);
+				}
 			}
 			else if (actualInvotory[x]->GetLearnSpeel() != 0)
 			{
