@@ -1,3 +1,5 @@
+Place your mouse on an item and everything will be displayed on your right. All possibles actions to take are displayed in yellow (when you cook you need to choose two items)
+
 ![Flags_and_TagOperators](https://github.com/user-attachments/assets/a48c0972-6a5a-4685-b25c-737fbe65a435)
 ![Flammable_Interface1](https://github.com/user-attachments/assets/bbaa8cf4-c5ec-478b-9834-3966bb76da74)
 ![Flammable_Interface2](https://github.com/user-attachments/assets/5e9fc997-331e-494e-b7b4-c8467fee8c14)
