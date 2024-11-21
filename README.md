@@ -1,4 +1,4 @@
-![foodProcessorClass](https://github.com/user-attachments/assets/c8b3b0c8-d517-4a9b-9346-7ed0181926ec)
+![foodProcessorClass]([https://github.com/user-attachments/assets/c8b3b0c8-d517-4a9b-9346-7ed0181926ec](https://github.com/Blue-Silvers/Adv_InventoryRPG/blob/main/foodProcessorClass.png))
 ![Item_should_be_placed_at_the_end_of_the_Items_of_said_type_in_the_Inventory](https://github.com/user-attachments/assets/c8b3b0c8-d517-4a9b-9346-7ed0181926ec)
 ![remove_Items_from_the_inventory_regardless_of_position_Part1](https://github.com/user-attachments/assets/c8b3b0c8-d517-4a9b-9346-7ed0181926ec)
 ![remove_Items_from_the_inventory_regardless_of_position_Part2](https://github.com/user-attachments/assets/c8b3b0c8-d517-4a9b-9346-7ed0181926ec)
