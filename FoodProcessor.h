@@ -1,17 +1,15 @@
 #pragma once
 #include "IBakable.h"
 #include "Consumable.h"
-#include "Inventory.h"
+#include "GameInit.h"
 
 class FoodProcessor : public IBakable
 {
 public:
-	FoodProcessor(Inventory* inventory);
+	FoodProcessor();
 
-	void Cook(Consumable& consumableItem) override;
-	void GetNewCookedItem(Consumable& consumableItem);
-
-private:
-	Inventory* mInventory = new Inventory();
+	Item* Cook(Item* consumableItem, Item* secondConsumableItem) override;
+	Consumable* vegetableStew;
+	Consumable* mushroomPremiumSteak;
 };
 

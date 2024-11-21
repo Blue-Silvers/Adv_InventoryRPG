@@ -6,7 +6,7 @@ GameInit::GameInit()
 
 }
 
-void GameInit::Init(Inventory inv)
+void GameInit::Init()
 {
 	broadSword = new Physical("Broadsword", 1, 5, 2, 200, NONE, 342, 500, 6, 0.5, 5, LoadTexture("resources/Icone/Broadsword.png"), ItemTag::Weapon);
 
@@ -18,11 +18,18 @@ void GameInit::Init(Inventory inv)
 
 	poseidonStaff = new Staff("Poseidon's Staff", 1, 1, 10, 2000, WATER, 6000, 6000, 50, 5.2, 4000, LoadTexture("resources/Icone/PoseidonStaff.png"), ItemTag::Weapon);
 
-	bread = new Consumable("Bread", 16, 64, 1, 5, NONE, 20, LoadTexture("resources/Icone/Bread.png"), ItemTag::Consumable);
+	bread = new Consumable("Bread", 16, 64, 1, 5, NONE, 20, LoadTexture("resources/Icone/Bread.png"), ItemTag::Consumable, FoodTag::Other);
 
-	honey = new Consumable("Honey", 10, 100, 1, 20, EARTH, 5, LoadTexture("resources/Icone/Honey.png"), ItemTag::Consumable);
+	honey = new Consumable("Honey", 10, 100, 1, 20, EARTH, 5, LoadTexture("resources/Icone/Honey.png"), ItemTag::Consumable, FoodTag::Other);
 
 	chainedChesplate = new Armor("Iron-chained Chestplate", 1, 5, 25, 250, EARTH, 120, 300, 4, BODY, LoadTexture("resources/Icone/IronChainedChestplate.png"), ItemTag::Armor);
 
 	spartaHelmet = new Armor("Sparta Helmet", 1, 5, 5, 400, FIRE, 232, 400, 6, HEAD, LoadTexture("resources/Icone/SpartaHelmet.png"), ItemTag::Armor);
+
+
+	chicken = new Consumable("Chicken", 1, 1, 5, 25, FIRE, 5, LoadTexture("resources/Icone/Chicken.png"), ItemTag::Consumable, FoodTag::Meat);
+	chanterelles = new Consumable("Chanterelles", 1, 1, 1, 70, WATER, 15, LoadTexture("resources/Icone/Chanterelles.png"), ItemTag::Consumable, FoodTag::Mushroom);
+	herbsBundle = new Consumable("Herbs bundle", 1, 1, 2, 10, HEAL, 2, LoadTexture("resources/Icone/HerbsBundle.png"), ItemTag::Consumable, FoodTag::Herb);
+	bokChoy = new Consumable("Bok choy", 1, 1, 1, 60, EARTH, 13, LoadTexture("resources/Icone/BokChoy.png"), ItemTag::Consumable, FoodTag::Vegetable);
+
 }

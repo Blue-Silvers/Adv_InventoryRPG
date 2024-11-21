@@ -5,7 +5,7 @@ Consumable::Consumable()
 
 }
 
-Consumable::Consumable(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int heal, Texture2D newItemSprite, uint8_t tag)
+Consumable::Consumable(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int heal, Texture2D newItemSprite, uint8_t tag, uint8_t type)
 {
 	itemName = name;
 	actualItemStackable = stackable;
@@ -16,6 +16,15 @@ Consumable::Consumable(string name, int stackable, int maxStackable, int weight,
 	healing = heal;
 	itemSprite = newItemSprite;
 	mTag = tag;
+	foodType = type;
+	if (foodType != FoodTag::Other)
+	{
+		cookable = true;
+	}
+	else
+	{
+		cookable = false;
+	}
 }
 
 int Consumable::GetFood()
@@ -98,6 +107,30 @@ string Consumable::GetItemStatistique()
 			"\n\n" << "Price : " << itemPrice << "PO" <<
 			"\n\n" << "Effect : " << itemEffectText <<
 			"\n\n" << "Healing : " << healing << "Hp";
+	}
+
+	if (foodType != FoodTag::Other)
+	{
+		if (foodType == FoodTag::Meat)
+		{
+			returnValue << "\n\n" << "Cookable : meat";
+		}
+		if (foodType == FoodTag::Mushroom)
+		{
+			returnValue << "\n\n" << "Cookable : mushroom";
+		}
+		if (foodType == FoodTag::Herb)
+		{
+			returnValue << "\n\n" << "Cookable : herb";
+		}
+		if (foodType == FoodTag::Vegetable)
+		{
+			returnValue << "\n\n" << "Cookable : vegetable";
+		}
+	}
+	else
+	{
+		returnValue << "\n\n" << "Uncookable";
 	}
 
 	return returnValue.str();

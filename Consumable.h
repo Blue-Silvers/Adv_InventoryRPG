@@ -1,6 +1,7 @@
 #pragma once
 #include "Item.h"
 
+
 class Consumable : public Item
 {
 private:
@@ -8,9 +9,10 @@ private:
 
 public:
 	int healing = 1;
+	
 
 	Consumable();
-	Consumable(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int heal, Texture2D newItemSprite, uint8_t tag);
+	Consumable(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int heal, Texture2D newItemSprite, uint8_t tag, uint8_t type);
 
 	string GetItemStatistique() override;
 	int GetFood() override;

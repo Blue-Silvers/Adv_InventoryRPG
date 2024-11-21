@@ -24,8 +24,14 @@ public:
 	Armor* chainedChesplate;
 	Armor* spartaHelmet;
 
+
+	Consumable* chicken;
+	Consumable* chanterelles;
+	Consumable* herbsBundle;
+	Consumable* bokChoy;
+
 	GameInit();
-	void Init(Inventory inv);
+	void Init();
 
 };
 

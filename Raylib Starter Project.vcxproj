@@ -137,6 +137,7 @@
     <ClCompile Include="Consumable.cpp" />
     <ClCompile Include="Equipement.cpp" />
     <ClCompile Include="FoodProcessor.cpp" />
+    <ClCompile Include="FoodType.cpp" />
     <ClCompile Include="GameInit.cpp" />
     <ClCompile Include="iBakable.cpp" />
     <ClCompile Include="iFlammable.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="Consumable.h" />
     <ClInclude Include="Equipement.h" />
     <ClInclude Include="FoodProcessor.h" />
+    <ClInclude Include="FoodType.h" />
     <ClInclude Include="GameInit.h" />
     <ClInclude Include="iBakable.h" />
     <ClInclude Include="iFlammable.h" />

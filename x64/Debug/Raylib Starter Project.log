@@ -1,2 +1,14 @@
-﻿  main.cpp
+﻿  Inventory.cpp
+C:\Users\fury8\Downloads\Adv_InventoryRPG\Inventory.cpp(42,27): warning C4838: la conversion de 'int' en 'float' requiert une conversion restrictive
+C:\Users\fury8\Downloads\Adv_InventoryRPG\Inventory.cpp(42,27): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+C:\Users\fury8\Downloads\Adv_InventoryRPG\Inventory.cpp(42,59): warning C4838: la conversion de 'int' en 'float' requiert une conversion restrictive
+C:\Users\fury8\Downloads\Adv_InventoryRPG\Inventory.cpp(42,59): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+C:\Users\fury8\Downloads\Adv_InventoryRPG\Inventory.cpp(209,27): warning C4838: la conversion de 'int' en 'float' requiert une conversion restrictive
+C:\Users\fury8\Downloads\Adv_InventoryRPG\Inventory.cpp(209,27): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+C:\Users\fury8\Downloads\Adv_InventoryRPG\Inventory.cpp(209,43): warning C4838: la conversion de 'int' en 'float' requiert une conversion restrictive
+C:\Users\fury8\Downloads\Adv_InventoryRPG\Inventory.cpp(209,43): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+C:\Users\fury8\Downloads\Adv_InventoryRPG\Inventory.cpp(232,31): warning C4838: la conversion de 'int' en 'float' requiert une conversion restrictive
+C:\Users\fury8\Downloads\Adv_InventoryRPG\Inventory.cpp(232,31): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+C:\Users\fury8\Downloads\Adv_InventoryRPG\Inventory.cpp(232,63): warning C4838: la conversion de 'int' en 'float' requiert une conversion restrictive
+C:\Users\fury8\Downloads\Adv_InventoryRPG\Inventory.cpp(232,63): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
   Raylib Starter Project.vcxproj -> C:\Users\fury8\Downloads\Adv_InventoryRPG\x64\Debug\Raylib Starter Project.exe

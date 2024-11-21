@@ -2,7 +2,7 @@
 #include <iostream>
 #include "vector"
 #include "Item.h"
-
+#include "FoodProcessor.h"
 
 using namespace std;
 
@@ -26,6 +26,8 @@ public :
     vector<Item*> magicInvotory;
     vector<Item*> consumableInvotory;
     vector<Item*> armorInvotory;
+
+    Item* foodRecepies[2]{ nullptr, nullptr };
 
     Inventory();
     void AddToInventory(Item* newItem);

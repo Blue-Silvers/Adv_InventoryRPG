@@ -2,7 +2,7 @@
 
 Armor::Armor()
 {
-
+	foodType = FoodTag::Other;
 }
 
 Armor::Armor(std::string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, int durability, int maxDurability, int protection, armorSlot armorType, Texture2D newItemSprite, uint8_t tag)

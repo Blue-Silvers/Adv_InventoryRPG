@@ -3,6 +3,6 @@
 
 class IBakable
 {
-	virtual void Cook(Consumable& consumableItem) = 0;
+	virtual Item* Cook(Item* consumableItem, Item* secondConsumableItem) = 0;
 };
 

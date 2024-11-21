@@ -36,7 +36,7 @@ void Start()
     SetTargetFPS(60);
     ft = LoadFont("resources/fonts/jupiter_crash.png");
 
-    gameManage.Init(myInvotory);
+    gameManage.Init();
 
     myInvotory.Start();
 
@@ -58,6 +58,10 @@ void Update()
     if (IsMouseButtonReleased(MOUSE_BUTTON_MIDDLE))
     {
         myInvotory.AddToInventory(gameManage.cactusSword);
+        myInvotory.AddToInventory(gameManage.chicken);
+        myInvotory.AddToInventory(gameManage.chanterelles);
+        myInvotory.AddToInventory(gameManage.herbsBundle);
+        myInvotory.AddToInventory(gameManage.bokChoy);
     }
 
 
@@ -73,7 +77,8 @@ void Draw()
 
     ClearBackground(DARKBROWN);
 
-
+    DrawTextEx(ft, "Middle click for search", Vector2{ 925, 525 }, 25, 5, YELLOW);
+    DrawTextEx(ft, "lot of items", Vector2{ 925, 550 }, 25, 5, YELLOW);
     for (int x = 0; x < 9; x++)
     {
         for (int y = 0; y < 8; y++)

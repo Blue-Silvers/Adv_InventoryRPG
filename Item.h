@@ -2,6 +2,7 @@
 #include "raylib.h"
 #include "iFlammable.h"
 #include "ItemTags.h"
+#include "FoodType.h"
 #include <iostream>
 #include <sstream>
 using namespace std;
@@ -30,6 +31,8 @@ public:
 	Texture2D itemSprite;
 	itemEffect itemEffectName = NONE;
 	uint8_t mTag =0;
+	bool cookable = false;
+	uint8_t foodType = FoodTag::Other;
 
 	Item();
 	Item(string name, int stackable, int maxStackable, int weight, int price, itemEffect effect, Texture2D newItemSprite, uint8_t tag);

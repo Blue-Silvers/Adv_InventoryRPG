@@ -60,7 +60,7 @@ void Inventory::Update(int x, Font ft)
 					}
 					else
 					{
-						actualInvotory[x] = nullptr;
+						//actualInvotory[x] = nullptr;
 					}
 				}
 				else if (actualInvotory[x]->GetLearnSpeel() != 0)
@@ -104,6 +104,33 @@ void Inventory::Update(int x, Font ft)
 				else 
 				{
 					RemoveFromInventory(x);
+				}
+			}
+			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+			{
+				if (actualInvotory[x]->cookable == true)
+				{
+					if (foodRecepies[0] == nullptr)
+					{
+						foodRecepies[0] = actualInvotory[x];
+					}
+					else 
+					{
+						foodRecepies[1] = actualInvotory[x];
+					}
+					RemoveFromInventory(x);
+					if (foodRecepies[1] != nullptr)
+					{
+						FoodProcessor processor;
+						Item* newFood = processor.Cook(foodRecepies[0], foodRecepies[1]);
+						actualInvotory.push_back(newFood);
+						if (newFood == foodRecepies[0]) 
+						{
+							actualInvotory.push_back(foodRecepies[1]);
+						}
+						foodRecepies[0] = nullptr;
+						foodRecepies[1] = nullptr;
+					}
 				}
 			}
 			if (IsMouseButtonReleased(MOUSE_BUTTON_RIGHT) && press == false)
@@ -234,29 +261,15 @@ void Inventory::DrawItem(int x, Font ft)
 	{
 		DrawTexturePro(actualInvotory[x]->itemSprite, Rectangle{ 0, 0, 400, 400 }, itemRec, origin, 0.0f, WHITE);
 	}
-	/*if (physicalInvotory[x] != nullptr)
+
+	if (foodRecepies[0] != nullptr)
 	{
-		Rectangle itemRec{ (int)(100 * (x - (x / 9) * 9)), (int)(100 * invPos), 100, 100 };
-		DrawTexturePro(physicalInvotory[x]->itemSprite, Rectangle{ 0, 0, 400, 400 }, itemRec, origin, 0.0f, WHITE);
+		Rectangle FRFitemRec{ (int)(100*9.5), (int)(100 * 6), 100, 100 };
+		DrawTexturePro(foodRecepies[0]->itemSprite, Rectangle{ 0, 0, 400, 400 }, FRFitemRec, origin, 0.0f, WHITE);
 	}
-	if (magicInvotory[x] != nullptr)
+	if (foodRecepies[1] != nullptr)
 	{
-		Rectangle itemRec{ (int)(100 * (x - (x / 9) * 9)), (int)(100 * (invPos + 1)), 100, 100 };
-		DrawTexturePro(magicInvotory[x]->itemSprite, Rectangle{ 0, 0, 400, 400 }, itemRec, origin, 0.0f, WHITE);
+		Rectangle FRSitemRec{ (int)(100*10.5), (int)(100 * 6), 100, 100 };
+		DrawTexturePro(foodRecepies[1]->itemSprite, Rectangle{ 0, 0, 400, 400 }, FRSitemRec, origin, 0.0f, WHITE);
 	}
-	if (staffInvotory[x] != nullptr)
-	{
-		Rectangle itemRec{ (int)(100 * (x - (x / 9) * 9)), (int)(100 * (invPos + 2)), 100, 100 };
-		DrawTexturePro(staffInvotory[x]->itemSprite, Rectangle{ 0, 0, 400, 400 }, itemRec, origin, 0.0f, WHITE);
-	}
-	if (armorInvotory[x] != nullptr)
-	{
-		Rectangle itemRec{ (int)(100 * (x - (x / 9) * 9)), (int)(100 * (invPos + 3)), 100, 100 };
-		DrawTexturePro(armorInvotory[x]->itemSprite, Rectangle{ 0, 0, 400, 400 }, itemRec, origin, 0.0f, WHITE);
-	}
-	if (consumableInvotory[x] != nullptr)
-	{
-		Rectangle itemRec{ (int)(100 * (x - (x / 9) * 9)), (int)(100 * (invPos + 4)), 100, 100 };
-		DrawTexturePro(consumableInvotory[x]->itemSprite, Rectangle{ 0, 0, 400, 400 }, itemRec, origin, 0.0f, WHITE);
-	}*/
 }
