@@ -22,21 +22,10 @@ public :
     vector<Item*>::iterator it;
 
     vector<Item*> actualInvotory;
-    vector<Item*> physicalInvotory; 
+    vector<Item*> weaponInvotory;
     vector<Item*> magicInvotory;
-    vector<Item*> staffInvotory;
     vector<Item*> consumableInvotory;
     vector<Item*> armorInvotory;
-	/*Item* actualInvotory[8][9]{
-        { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr},
-        { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr},
-        { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr},
-        { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr},
-        { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr},
-        { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr},
-        { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr},
-        { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr},
-    };*/
 
     Inventory();
     void AddToInventory(Item* newItem);
@@ -44,6 +33,7 @@ public :
 	void Draw(int x, int y, Font ft);
     void DrawItem(int x, Font ft);
 	void Start();
-    void Update(int x, int y, Font ft);
+    void Update(int x, Font ft);
+    void ActualiseUnvotory();
 };
 

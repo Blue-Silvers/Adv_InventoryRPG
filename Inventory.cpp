@@ -23,33 +23,10 @@ void Inventory::AddToInventory(Item* newItem)
 	}
 
 	
-	/*if (newItem->CompareTag(3))
-	{
-		physicalInvotory.push_back(newItem);
-	}
-	if (dynamic_cast<Magic*>(newItem) != NULL)
-	{
-		magicInvotory.push_back(newItem);
-	}
-	if (dynamic_cast<Staff*>(newItem) != NULL)
-	{
-		staffInvotory.push_back(newItem);
-	}
-	if (dynamic_cast<Consumable*>(newItem) != NULL)
-	{
-		consumableInvotory.push_back(newItem);
-	}
-	if (dynamic_cast<Armor*>(newItem) != NULL)
-	{
-		armorInvotory.push_back(newItem);
-	}*/
 }
 
 void Inventory::RemoveFromInventory(int itemIndex)
 {
-	/*std::vector<Item*>::iterator i;
-	i = actualInvotory.begin() + itemIndex;
-	actualInvotory.erase(i);*/
 	actualInvotory[itemIndex] = nullptr;
 }
 
@@ -59,15 +36,14 @@ void Inventory::Start()
 	backGround = LoadTexture("resources/Icone/BG_Description.png");
 }
 
-void Inventory::Update(int x, int y, Font ft)
+void Inventory::Update(int x, Font ft)
 {
 	int invPos = x / 9;
-	Rectangle rec{ (int)(100 * (x - (x / 9) * 9)), (int)(100 * y), 100, 100 };
+	Rectangle rec{ (int)(100 * (x - (x / 9) * 9)), (int)(100 * invPos), 100, 100 };
 	if (CheckCollisionPointRec(GetMousePosition(), rec))
 	{
 		if (actualInvotory[x] != nullptr)
 		{
-			//DrawTextEx(ft, actualInvotory[y][x]->GetItemStatistique().c_str(), Vector2{ 950, 5 }, 20, 5, WHITE);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && use == true)
 			{
 				if (actualInvotory[x]->GetFood() != 0)
@@ -136,6 +112,69 @@ void Inventory::Update(int x, int y, Font ft)
 			}
 		}
 	}
+}
+
+//Actualise inventory at end of the loop
+void Inventory::ActualiseUnvotory()
+{
+	for (int i = 0; i < actualInvotory.size(); i++)
+	{
+		if (actualInvotory[i] == nullptr)
+		{
+			actualInvotory.erase(actualInvotory.begin() + i);
+		}
+	}
+
+	//stock item
+	for (int x = 0; x < actualInvotory.size(); x++)
+	{
+		if (actualInvotory[x]->CompareTag(ItemTag::Weapon))
+		{
+			weaponInvotory.push_back(actualInvotory[x]);
+		}
+		if (actualInvotory[x]->CompareTag(ItemTag::Magic))
+		{
+			magicInvotory.push_back(actualInvotory[x]);
+		}
+		if (actualInvotory[x]->CompareTag(ItemTag::Consumable))
+		{
+			consumableInvotory.push_back(actualInvotory[x]);
+		}
+		if (actualInvotory[x]->CompareTag(ItemTag::Armor))
+		{
+			armorInvotory.push_back(actualInvotory[x]);
+		}
+	}
+
+	// reset inv
+	actualInvotory.clear();
+
+	//Weapon at first
+	for (int x = 0; x < weaponInvotory.size(); x++)
+	{
+		actualInvotory.push_back(weaponInvotory[x]);
+	}
+	//Magic at second
+	for (int x = 0; x < magicInvotory.size(); x++)
+	{
+		actualInvotory.push_back(magicInvotory[x]);
+	}
+	//Consumable at Third
+	for (int x = 0; x < consumableInvotory.size(); x++)
+	{
+		actualInvotory.push_back(consumableInvotory[x]);
+	}
+	//Armor at end
+	for (int x = 0; x < armorInvotory.size(); x++)
+	{
+		actualInvotory.push_back(armorInvotory[x]);
+	}
+
+	//reset all vector for next use
+	weaponInvotory.clear();
+	magicInvotory.clear();
+	consumableInvotory.clear();
+	armorInvotory.clear();
 }
 
 void Inventory::Draw(int x, int y, Font ft)
